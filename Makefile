@@ -9,13 +9,16 @@
 #                is connected. I am using Arduino UNO as ISP and for this the
 #                programmer is avrisp
 # FUSES ........ Parameters for avrdude to flash the fuses appropriately.
+
+V_USB_PATH = v-usb/usbdrv
+CONFIG_PATH = config
  
 DEVICE     = atmega328p
 CLOCK      = 16000000
 PORT_LX    = /dev/ttyACM0
 PORT_MAC   = /dev/cu.usbserial-AM01SJR3
 PROGRAMMER = -c arduino -P $(PORT_MAC) -v -v -v -F -b 57600
-OBJECTS    = usbdrv/usbdrv.o usbdrv/usbdrvasm.o usbdrv/oddebug.o keys.o
+OBJECTS    = $(V_USB_PATH)/usbdrv.o $(V_USB_PATH)/usbdrvasm.o $(V_USB_PATH)/oddebug.o keys.o
 
 # External Clock
 FUSES      = -U lfuse:w:0xc0:m -U hfuse:w:0xdf:m -U efuse:w:0xff:m
@@ -29,7 +32,7 @@ FUSES      = -U lfuse:w:0xc0:m -U hfuse:w:0xdf:m -U efuse:w:0xff:m
 # Tune the lines below only if you know what you are doing:
  
 AVRDUDE = avrdude $(PROGRAMMER) -p m168
-COMPILE = avr-gcc -Wall -Os -Iusbdrv -DF_CPU=$(CLOCK) -mmcu=$(DEVICE)
+COMPILE = avr-gcc -Wall -Os -I$(V_USB_PATH) -I$(CONFIG_PATH) -DF_CPU=$(CLOCK) -mmcu=$(DEVICE)
  
 # symbolic targets:
 all: main.hex
