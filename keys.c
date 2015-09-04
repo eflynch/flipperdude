@@ -1,3 +1,13 @@
+/* Name: keys.c
+ * Project: flipperdude
+ * Author: Evan Lynch
+ * Creation Date: 2015-05-20
+ * Tabsize: 4
+ * Copyright: (c) 2015 by Evan Lynch
+ * License: MIT License
+ */
+
+// Adapted from
 /* Name: test.c
  * Project: hid-mouse, a very simple HID example
  * Author: Christian Starkjohann
@@ -6,16 +16,6 @@
  * Copyright: (c) 2008 by OBJECTIVE DEVELOPMENT Software GmbH
  * License: GNU GPL v2 (see License.txt), GNU GPL v3 or proprietary (CommercialLicense.txt)
  */
-
-/*
-This example should run on most AVRs with only little changes. No special
-hardware resources except INT0 are used. You may have to change usbconfig.h for
-different I/O pins for USB. Please note that USB D+ must be the INT0 pin, or
-at least be connected to INT0 as well.
-
-We use VID/PID 0x046D/0xC00E which is taken from a Logitech mouse. Don't
-publish any hardware using these IDs! This is for demonstration only!
-*/
 
 #include <avr/io.h>
 #include <avr/wdt.h>
